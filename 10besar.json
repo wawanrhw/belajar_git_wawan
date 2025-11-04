@@ -1,0 +1,12 @@
+[
+  { "nama": "Pencurian", "jumlah": 250 },
+  { "nama": "Penipuan", "jumlah": 190 },
+  { "nama": "Penganiayaan", "jumlah": 160 },
+  { "nama": "Narkotika", "jumlah": 140 },
+  { "nama": "Perjudian", "jumlah": 120 },
+  { "nama": "Kekerasan Dalam Rumah Tangga", "jumlah": 100 },
+  { "nama": "Korupsi", "jumlah": 85 },
+  { "nama": "Pemerkosaan", "jumlah": 70 },
+  { "nama": "Penggelapan", "jumlah": 65 },
+  { "nama": "Pembunuhan", "jumlah": 50 }
+]

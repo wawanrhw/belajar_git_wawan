@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statistik Kriminalitas</title>
+
+  <!-- Leaflet dan DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+  <style>
+    /* Reset dan layout dasar */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0 10px;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      text-align: left; /* Ubah jadi kiri */
+      margin: 20px 0;
+      flex-shrink: 0;
+      padding-left: 10px; /* Beri jarak kiri */
+    }
+    /* Container utama: map + sidebar */
+    .map-container {
+      flex: 1 1 auto;
+      display: flex;
+      gap: 15px;
+      min-height: 0;
+    }
+    #map {
+      flex-grow: 1;
+      min-height: 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .sidebar {
+      width: 360px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+      background: #fafafa;
+      min-height: 0;
+    }
+
+    /* Tabel modern */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 10px; /* jarak antar baris */
+      margin-bottom: 25px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    table thead tr {
+      background-color: #2a9d8f; /* hijau toska */
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    table thead th {
+      padding: 12px 15px;
+      text-align: left;
+    }
+    table tbody tr {
+      background-color: #fff;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    table tbody tr:hover {
+      background-color: #e0f2f1;
+    }
+    table tbody td {
+      padding: 12px 15px;
+      border-top: 1px solid #f0f0f0;
+      color: #333;
+      font-size: 14px;
+    }
+    table tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .chart-container {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Statistik Kriminalitas dan Keamanan</h1>
+
+  <div class="map-container">
+    <div id="map"></div>
+
+    <div class="sidebar" id="statistikSidebar">
+      <h4>5 Wilayah Kasus Terbanyak</h4>
+      <table id="top5Table">
+        <thead><tr><th>Wilayah</th><th>Jumlah</th></tr></thead>
+        <tbody><tr><td colspan="2">Memuat data...</td></tr></tbody>
+      </table>
+
+      <h4>10 Jenis Tindak Pidana Terbesar</h4>
+      <div class="chart-container">
+        <canvas id="jenisChart" height="280"></canvas>
+      </div>
+
+      <h4>Tren 3 Tahun</h4>
+      <table id="trenTable">
+        <thead><tr><th>Tahun</th><th>Jumlah</th></tr></thead>
+        <tbody><tr><td colspan="2">Memuat data...</td></tr></tbody>
+      </table>
+
+      <h4>Persentase Kekerasan</h4>
+      <table id="persenTable">
+        <thead><tr><th>Kategori</th><th>%</th></tr></thead>
+        <tbody><tr><td colspan="2">Memuat data...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Library JS -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- JS lokal -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

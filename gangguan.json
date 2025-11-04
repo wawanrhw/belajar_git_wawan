@@ -1,0 +1,23 @@
+[
+  {
+    "polda": "Polda Metro Jaya",
+    "lat": -6.3,
+    "lon": 106.8,
+    "kejadian": 45,
+    "jenis": "Tawuran"
+  },
+  {
+    "polda": "Polda Jawa Timur",
+    "lat": -7.25,
+    "lon": 112.75,
+    "kejadian": 30,
+    "jenis": "Kerusuhan"
+  },
+  {
+    "polda": "Polda Jawa Barat",
+    "lat": -6.91,
+    "lon": 107.61,
+    "kejadian": 20,
+    "jenis": "Aksi Unjuk Rasa"
+  }
+]

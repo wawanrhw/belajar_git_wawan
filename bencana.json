@@ -1,0 +1,26 @@
+[
+  {
+    "polda": "Polda Metro Jaya",
+    "lat": -6.3,
+    "lon": 106.8,
+    "jenis": "Banjir Ringan",
+    "kejadian": 2,
+    "keterangan": "Drainase meluap"
+  },
+  {
+    "polda": "Polda Jawa Timur",
+    "lat": -7.25,
+    "lon": 112.75,
+    "jenis": "Longsor Ringan",
+    "kejadian": 1,
+    "keterangan": "Tanah labil"
+  },
+  {
+    "polda": "Polda Jawa Barat",
+    "lat": -6.91,
+    "lon": 107.61,
+    "jenis": "Banjir Ringan",
+    "kejadian": 3,
+    "keterangan": "Curah hujan tinggi"
+  }
+]

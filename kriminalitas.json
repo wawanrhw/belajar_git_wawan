@@ -1,0 +1,402 @@
+[
+  {
+    "polda": "Polda Metro Jaya",
+    "lat": -6.2,
+    "lon": 106.8167,
+    "total": 1250,
+    "jenis": [
+      { "nama": "Pencurian", "jumlah": 470 },
+      { "nama": "Narkoba", "jumlah": 300 },
+      { "nama": "Penganiayaan", "jumlah": 250 },
+      { "nama": "Penipuan", "jumlah": 150 },
+      { "nama": "Perampokan", "jumlah": 80 }
+    ],
+    "top_polres": [
+      {
+        "nama": "Polres Jakarta Selatan",
+        "jumlah": 320,
+        "lat": -6.2667,
+        "lon": 106.8,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 110 },
+          { "nama": "Narkoba", "jumlah": 80 },
+          { "nama": "Penganiayaan", "jumlah": 60 },
+          { "nama": "Penipuan", "jumlah": 40 },
+          { "nama": "Perampokan", "jumlah": 30 }
+        ]
+      },
+      {
+        "nama": "Polres Jakarta Timur",
+        "jumlah": 290,
+        "lat": -6.2,
+        "lon": 106.9,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 100 },
+          { "nama": "Penganiayaan", "jumlah": 70 },
+          { "nama": "Narkoba", "jumlah": 60 },
+          { "nama": "Penipuan", "jumlah": 40 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Jakarta Barat",
+        "jumlah": 260,
+        "lat": -6.15,
+        "lon": 106.75,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 90 },
+          { "nama": "Narkoba", "jumlah": 70 },
+          { "nama": "Penganiayaan", "jumlah": 50 },
+          { "nama": "Penipuan", "jumlah": 30 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Jakarta Utara",
+        "jumlah": 220,
+        "lat": -6.1333,
+        "lon": 106.9,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 80 },
+          { "nama": "Penganiayaan", "jumlah": 50 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penipuan", "jumlah": 30 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Jakarta Pusat",
+        "jumlah": 160,
+        "lat": -6.1833,
+        "lon": 106.8333,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 60 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 30 },
+          { "nama": "Penipuan", "jumlah": 20 },
+          { "nama": "Perampokan", "jumlah": 10 }
+        ]
+      }
+    ]
+  },
+  {
+    "polda": "Polda Jawa Timur",
+    "lat": -7.25,
+    "lon": 112.75,
+    "total": 980,
+    "jenis": [
+      { "nama": "Pencurian", "jumlah": 400 },
+      { "nama": "Penganiayaan", "jumlah": 220 },
+      { "nama": "Narkoba", "jumlah": 180 },
+      { "nama": "Penipuan", "jumlah": 120 },
+      { "nama": "Perampokan", "jumlah": 60 }
+    ],
+    "top_polres": [
+      {
+        "nama": "Polrestabes Surabaya",
+        "jumlah": 300,
+        "lat": -7.2575,
+        "lon": 112.7521,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 110 },
+          { "nama": "Narkoba", "jumlah": 80 },
+          { "nama": "Penganiayaan", "jumlah": 50 },
+          { "nama": "Penipuan", "jumlah": 35 },
+          { "nama": "Perampokan", "jumlah": 25 }
+        ]
+      },
+      {
+        "nama": "Polres Malang",
+        "jumlah": 200,
+        "lat": -7.9787,
+        "lon": 112.6264,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 90 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 30 },
+          { "nama": "Penipuan", "jumlah": 25 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Sidoarjo",
+        "jumlah": 180,
+        "lat": -7.4465,
+        "lon": 112.7181,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 70 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 30 },
+          { "nama": "Penipuan", "jumlah": 25 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Gresik",
+        "jumlah": 160,
+        "lat": -7.1667,
+        "lon": 112.65,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 60 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 25 },
+          { "nama": "Penipuan", "jumlah": 20 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Kediri",
+        "jumlah": 140,
+        "lat": -7.8169,
+        "lon": 112.0113,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 50 },
+          { "nama": "Narkoba", "jumlah": 35 },
+          { "nama": "Penganiayaan", "jumlah": 25 },
+          { "nama": "Penipuan", "jumlah": 20 },
+          { "nama": "Perampokan", "jumlah": 10 }
+        ]
+      }
+    ]
+  },
+  {
+    "polda": "Polda Jawa Barat",
+    "lat": -6.90389,
+    "lon": 107.61861,
+    "total": 870,
+    "jenis": [
+      { "nama": "Pencurian", "jumlah": 350 },
+      { "nama": "Narkoba", "jumlah": 200 },
+      { "nama": "Penganiayaan", "jumlah": 160 },
+      { "nama": "Penipuan", "jumlah": 100 },
+      { "nama": "Perampokan", "jumlah": 60 }
+    ],
+    "top_polres": [
+      {
+        "nama": "Polrestabes Bandung",
+        "jumlah": 280,
+        "lat": -6.9147,
+        "lon": 107.6098,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 100 },
+          { "nama": "Narkoba", "jumlah": 70 },
+          { "nama": "Penganiayaan", "jumlah": 50 },
+          { "nama": "Penipuan", "jumlah": 40 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Bekasi",
+        "jumlah": 220,
+        "lat": -6.2383,
+        "lon": 106.9756,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 80 },
+          { "nama": "Narkoba", "jumlah": 50 },
+          { "nama": "Penganiayaan", "jumlah": 40 },
+          { "nama": "Penipuan", "jumlah": 30 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Bogor",
+        "jumlah": 180,
+        "lat": -6.595,
+        "lon": 106.816,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 70 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 30 },
+          { "nama": "Penipuan", "jumlah": 25 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Depok",
+        "jumlah": 120,
+        "lat": -6.4025,
+        "lon": 106.7942,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 40 },
+          { "nama": "Narkoba", "jumlah": 30 },
+          { "nama": "Penganiayaan", "jumlah": 20 },
+          { "nama": "Penipuan", "jumlah": 20 },
+          { "nama": "Perampokan", "jumlah": 10 }
+        ]
+      },
+      {
+        "nama": "Polres Cimahi",
+        "jumlah": 110,
+        "lat": -6.8722,
+        "lon": 107.5429,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 40 },
+          { "nama": "Narkoba", "jumlah": 25 },
+          { "nama": "Penganiayaan", "jumlah": 20 },
+          { "nama": "Penipuan", "jumlah": 15 },
+          { "nama": "Perampokan", "jumlah": 10 }
+        ]
+      }
+    ]
+  },
+  {
+    "polda": "Polda Sumatera Utara",
+    "lat": 3.5916,
+    "lon": 98.6722,
+    "total": 760,
+    "jenis": [
+      { "nama": "Pencurian", "jumlah": 300 },
+      { "nama": "Narkoba", "jumlah": 200 },
+      { "nama": "Penganiayaan", "jumlah": 140 },
+      { "nama": "Penipuan", "jumlah": 80 },
+      { "nama": "Perampokan", "jumlah": 40 }
+    ],
+    "top_polres": [
+      {
+        "nama": "Polrestabes Medan",
+        "jumlah": 280,
+        "lat": 3.5952,
+        "lon": 98.6722,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 100 },
+          { "nama": "Narkoba", "jumlah": 80 },
+          { "nama": "Penganiayaan", "jumlah": 50 },
+          { "nama": "Penipuan", "jumlah": 30 },
+          { "nama": "Perampokan", "jumlah": 20 }
+        ]
+      },
+      {
+        "nama": "Polres Deli Serdang",
+        "jumlah": 180,
+        "lat": 3.5591,
+        "lon": 98.8686,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 70 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penganiayaan", "jumlah": 30 },
+          { "nama": "Penipuan", "jumlah": 25 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Binjai",
+        "jumlah": 120,
+        "lat": 3.6,
+        "lon": 98.5,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 50 },
+          { "nama": "Narkoba", "jumlah": 30 },
+          { "nama": "Penganiayaan", "jumlah": 20 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 10 }
+        ]
+      },
+      {
+        "nama": "Polres Pematang Siantar",
+        "jumlah": 90,
+        "lat": 2.9576,
+        "lon": 99.0626,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 40 },
+          { "nama": "Narkoba", "jumlah": 20 },
+          { "nama": "Penganiayaan", "jumlah": 15 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 5 }
+        ]
+      },
+      {
+        "nama": "Polres Tanjung Balai",
+        "jumlah": 90,
+        "lat": 2.9667,
+        "lon": 99.8,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 40 },
+          { "nama": "Narkoba", "jumlah": 20 },
+          { "nama": "Penganiayaan", "jumlah": 15 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 5 }
+        ]
+      }
+    ]
+  },
+  {
+    "polda": "Polda Sulawesi Selatan",
+    "lat": -5.1477,
+    "lon": 119.4327,
+    "total": 580,
+    "jenis": [
+      { "nama": "Pencurian", "jumlah": 220 },
+      { "nama": "Penganiayaan", "jumlah": 150 },
+      { "nama": "Narkoba", "jumlah": 100 },
+      { "nama": "Penipuan", "jumlah": 70 },
+      { "nama": "Perampokan", "jumlah": 40 }
+    ],
+    "top_polres": [
+      {
+        "nama": "Polrestabes Makassar",
+        "jumlah": 220,
+        "lat": -5.1354,
+        "lon": 119.4238,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 80 },
+          { "nama": "Penganiayaan", "jumlah": 60 },
+          { "nama": "Narkoba", "jumlah": 40 },
+          { "nama": "Penipuan", "jumlah": 25 },
+          { "nama": "Perampokan", "jumlah": 15 }
+        ]
+      },
+      {
+        "nama": "Polres Gowa",
+        "jumlah": 140,
+        "lat": -5.3,
+        "lon": 119.7,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 60 },
+          { "nama": "Penganiayaan", "jumlah": 40 },
+          { "nama": "Narkoba", "jumlah": 25 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 5 }
+        ]
+      },
+      {
+        "nama": "Polres Maros",
+        "jumlah": 90,
+        "lat": -5.0167,
+        "lon": 119.5833,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 30 },
+          { "nama": "Penganiayaan", "jumlah": 25 },
+          { "nama": "Narkoba", "jumlah": 20 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 5 }
+        ]
+      },
+      {
+        "nama": "Polres Bone",
+        "jumlah": 80,
+        "lat": -4.5388,
+        "lon": 120.1803,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 30 },
+          { "nama": "Penganiayaan", "jumlah": 20 },
+          { "nama": "Narkoba", "jumlah": 15 },
+          { "nama": "Penipuan", "jumlah": 10 },
+          { "nama": "Perampokan", "jumlah": 5 }
+        ]
+      },
+      {
+        "nama": "Polres Parepare",
+        "jumlah": 50,
+        "lat": -4.0167,
+        "lon": 119.6333,
+        "jenis": [
+          { "nama": "Pencurian", "jumlah": 20 },
+          { "nama": "Penganiayaan", "jumlah": 15 },
+          { "nama": "Narkoba", "jumlah": 10 },
+          { "nama": "Penipuan", "jumlah": 3 },
+          { "nama": "Perampokan", "jumlah": 2 }
+        ]
+      }
+    ]
+  }
+]

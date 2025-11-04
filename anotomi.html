@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard Statistik Kriminalitas Lengkap</title>
+  <p style="font-weight: bold;font-size: 40px;font-family: Arial, Helvetica, sans-serif;text-align: right;" > Anatomi Of Crime</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f1f2f6;
+      padding: 20px;
+      width: 100vw;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      width: 100vw;
+      max-width: 1400px;
+    }
+    .box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      overflow-x: auto;
+      width: 100%;
+    }
+    .tab-menu {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    .tab-menu button {
+      flex: 1 1 100px;
+      background: #f5f6fa;
+      border: 1px solid #dcdde1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-weight: 500;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 100px;
+      text-align: center;
+    }
+    .tab-menu button:hover {
+      background: #eaf6ff;
+      color: #00a8ff;
+    }
+    .tab-menu button.active {
+      background: #00a8ff;
+      color: #fff;
+      border-color: #00a8ff;
+    }
+    canvas {
+      width: 100% !important;
+      height: 450px;
+      max-width: none;
+    }
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Div 1 -->
+    <div class="box" id="div1">
+      <h3 style="margin-bottom:10px;">Jumlah Kejahatan per Bulan/Tahun</h3>
+      <div class="tab-menu" id="menu1">
+        <button class="tab-btn active" data-period="12month1">Last 12 Months</button>
+        <button class="tab-btn" data-period="3year1">Last 3 Years</button>
+      </div>
+      <canvas id="chart1"></canvas>
+    </div>
+
+    <!-- Div 2 -->
+    <div class="box" id="div2">
+      <h3 style="margin-bottom:10px;">Trend Per Jenis Kejahatan</h3>
+      <div class="tab-menu" id="menu2">
+        <button class="tab-btn active" data-period="year2">Last Year</button>
+        <button class="tab-btn" data-period="month2">Last Month</button>
+        <button class="tab-btn" data-period="3year2">3 Year</button>
+      </div>
+      <canvas id="chart2"></canvas>
+    </div>
+
+    <!-- Div 3 -->
+    <div class="box" id="div3">
+      <h3 style="margin-bottom:10px;">Tren Usia Pelaku dan Waktu(Jenis Kelamin)</h3>
+      <div class="tab-menu" id="menu3">
+        <button class="tab-btn active" data-period="12month3">Last 12 Months</button>
+        <button class="tab-btn" data-period="3year3">Last 3 Years</button>
+      </div>
+      <canvas id="chart3a" style="margin-bottom:30px;"></canvas>
+      <canvas id="chart3b"></canvas>
+    </div>
+
+    <!-- Div 4 -->
+    <div class="box" id="div4">
+      <h3 style="margin-bottom:10px;">Usia Korban (Jenis Kelamin) & Waktu Kejadian</h3>
+      <div class="tab-menu" id="menu4">
+        <button class="tab-btn active" data-period="year4">Last Year</button>
+        <button class="tab-btn" data-period="month4">Last Month</button>
+        <button class="tab-btn" data-period="3year4">3 Year</button>
+      </div>
+      <canvas id="chart4a" style="margin-bottom:30px;"></canvas>
+      <canvas id="chart4b"></canvas>
+    </div>
+  </div>
+
+<script>
+  // Labels & Data
+
+  const monthLabels = ["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+
+  const last3YearsLabels = [
+    "Oct - Dec 2022","Jan - Mar 2023","Apr - Jun 2023","Jul - Sep 2023","Oct - Dec 2023",
+    "Jan - Mar 2024","Apr - Jun 2024","Jul - Sep 2024","Oct - Dec 2024","Jan - Mar 2025","Apr - Jun 2025"
+  ];
+
+  const crimeCategories20 = [
+    "Pencurian", "Kekerasan", "Penipuan", "Narkoba", "Penganiayaan",
+    "Pemerkosaan", "Pembunuhan", "Korupsi", "Penyelundupan", "Perampokan",
+    "Kejahatan Siber", "Penggelapan", "Pencucian Uang", "Pemerasan", "Perdagangan Orang",
+    "Tindak Pidana Lingkungan", "Kejahatan Jalanan", "Pelanggaran Lalu Lintas", "Pelanggaran HAM", "Kejahatan Seksual"
+  ];
+
+  // Usia untuk pelaku dan korban
+  const ageGroups = ["15-24", "25-34", "35-44", "45-54", "55+"];
+
+  // Jam kejadian
+  const hourLabels = ["00-03","04-07","08-11","12-15","16-19","20-23"];
+
+  // Data Set
+  const dataSet = {
+    // Div 1
+    last12Months: [120, 115, 130, 140, 125, 150, 160, 170, 165, 180, 190, 200],
+    last3Years: [3875, 3961, 3519, 3926, 4203, 3572, 3839, 4001, 3961, 3743, 3674],
+
+    // Div 2 (20 kategori)
+    lastYear: [500, 300, 200, 150, 120, 100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30],
+    lastMonth: [40, 25, 15, 12, 10, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 3, 3, 2, 2],
+
+    // Div 3 - Tren Waktu (mirip Div1)
+    last12MonthsTrend: [180, 115, 130, 140, 300, 150, 600, 170, 165, 180, 190, 200],
+    last3YearsTrend: [3875, 3961, 3519, 3926, 4203, 3572, 3839, 4001, 3961, 3743, 3674],
+
+    // Div 3 - Usia Pelaku (Laki-laki & Perempuan)
+    last12MonthsAgePelaku: {
+      male: [300, 450, 400, 350, 200],
+      female: [50, 70, 40, 30, 20]
+    },
+    last3YearsAgePelaku: {
+      male: [900, 1100, 1000, 900, 600],
+      female: [150, 200, 130, 110, 80]
+    },
+
+    // Div 4 - Usia Korban (Laki-laki & Perempuan)
+    lastYearAgeKorban: {
+      male: [280, 400, 370, 320, 190],
+      female: [60, 80, 70, 50, 40]
+    },
+    lastMonthAgeKorban: {
+      male: [20, 35, 30, 28, 15],
+      female: [5, 8, 6, 4, 3]
+    },
+    last3YearsAgeKorban: {
+      male: [850, 1100, 980, 870, 540],
+      female: [160, 210, 140, 100, 90]
+    },
+
+    // Div 4 - Waktu Kejadian
+    lastYearTime: [50, 30, 120, 200, 180, 160],
+    lastMonthTime: [5, 3, 12, 20, 18, 16],
+    last3YearsTime: [500, 300, 1200, 2000, 1800, 1600],
+  };
+
+  // Fungsi buat line chart (Div 1 & Tren Waktu)
+  function createLineChart(ctx, label, data, labels) {
+    return new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: label,
+          data: data,
+          backgroundColor: "rgba(0,168,255,0.3)",
+          borderColor: "#00a8ff",
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3,
+          pointRadius: 4,
+          pointHoverRadius: 7,
+          pointBackgroundColor: "#00a8ff"
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          tooltip: { mode: "index", intersect: false }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 20 }
+          }
+        }
+      }
+    });
+  }
+
+  // Fungsi buat bar horizontal (Div 2)
+  function createBarHorizontalChart(ctx, label, data, labels) {
+    return new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: label,
+          data: data,
+          backgroundColor: "#00a8ff",
+          borderRadius: 6
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { mode: "nearest" }
+        },
+        scales: {
+          x: { beginAtZero: true }
+        }
+      }
+    });
+  }
+
+  // Fungsi buat bar grup (Usia Pelaku/Korban)
+  function createBarGroupedChart(ctx, label, labels, maleData, femaleData) {
+    return new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: "Laki-laki",
+            data: maleData,
+            backgroundColor: "#0984e3",
+            borderRadius: 6
+          },
+          {
+            label: "Perempuan",
+            data: femaleData,
+            backgroundColor: "#fd79a8",
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: "top" },
+          tooltip: { mode: "index", intersect: false }
+        },
+        scales: {
+          y: { beginAtZero: true, stepSize: 100 }
+        }
+      }
+    });
+  }
+
+  // Fungsi buat bar biasa (Waktu Kejadian)
+  function createBarChart(ctx, label, data, labels) {
+    return new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [{
+          label: label,
+          data: data,
+          backgroundColor: "#00a8ff",
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { mode: "nearest" }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }
+
+
+  // === Setup Chart Instances ===
+
+  // Div 1 chart
+  const ctx1 = document.getElementById("chart1").getContext("2d");
+  let chart1 = createLineChart(ctx1, "Kasus", dataSet.last12Months, monthLabels);
+
+  // Div 2 chart
+  const ctx2 = document.getElementById("chart2").getContext("2d");
+  let chart2 = createBarHorizontalChart(ctx2, "Jumlah Kasus", dataSet.lastYear, crimeCategories20);
+
+  // Div 3 charts
+  const ctx3a = document.getElementById("chart3a").getContext("2d");
+  const ctx3b = document.getElementById("chart3b").getContext("2d");
+  let chart3a = createLineChart(ctx3a, "Tren Waktu", dataSet.last12MonthsTrend, monthLabels);
+  let chart3b = createBarGroupedChart(ctx3b, "Usia Pelaku", ageGroups, dataSet.last12MonthsAgePelaku.male, dataSet.last12MonthsAgePelaku.female);
+
+  // Div 4 charts
+  const ctx4a = document.getElementById("chart4a").getContext("2d");
+  const ctx4b = document.getElementById("chart4b").getContext("2d");
+  let chart4a = createBarGroupedChart(ctx4a, "Usia Korban", ageGroups, dataSet.lastYearAgeKorban.male, dataSet.lastYearAgeKorban.female);
+  let chart4b = createBarChart(ctx4b, "Waktu Kejadian", dataSet.lastYearTime, hourLabels);
+
+  // === Tab Switching Logic ===
+
+  function setActiveTab(menuId, period) {
+    const menu = document.getElementById(menuId);
+    const buttons = menu.querySelectorAll("button");
+    buttons.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.period === period);
+    });
+  }
+
+  // Div 1 tab
+  document.getElementById("menu1").addEventListener("click", e => {
+    if(e.target.tagName === "BUTTON") {
+      const period = e.target.dataset.period;
+      setActiveTab("menu1", period);
+
+      chart1.destroy();
+      if(period === "12month1") {
+        chart1 = createLineChart(ctx1, "Kasus", dataSet.last12Months, monthLabels);
+      } else if(period === "3year1") {
+        chart1 = createLineChart(ctx1, "Kasus", dataSet.last3Years, last3YearsLabels);
+      }
+    }
+  });
+
+  // Div 2 tab
+  document.getElementById("menu2").addEventListener("click", e => {
+    if(e.target.tagName === "BUTTON") {
+      const period = e.target.dataset.period;
+      setActiveTab("menu2", period);
+
+      chart2.destroy();
+      if(period === "year2") {
+        chart2 = createBarHorizontalChart(ctx2, "Jumlah Kasus", dataSet.lastYear, crimeCategories20);
+      } else if(period === "month2") {
+        chart2 = createBarHorizontalChart(ctx2, "Jumlah Kasus", dataSet.lastMonth, crimeCategories20);
+      } else if(period === "3year2") {
+        // Ambil data gabungan lastYear * 3 sebagai contoh
+        const data3year = dataSet.lastYear.map(x => x * 3);
+        chart2 = createBarHorizontalChart(ctx2, "Jumlah Kasus", data3year, crimeCategories20);
+      }
+    }
+  });
+
+  // Div 3 tab
+  document.getElementById("menu3").addEventListener("click", e => {
+    if(e.target.tagName === "BUTTON") {
+      const period = e.target.dataset.period;
+      setActiveTab("menu3", period);
+
+      chart3a.destroy();
+      chart3b.destroy();
+
+      if(period === "12month3") {
+        chart3a = createLineChart(ctx3a, "Tren Waktu", dataSet.last12MonthsTrend, monthLabels);
+        chart3b = createBarGroupedChart(ctx3b, "Usia Pelaku", ageGroups, dataSet.last12MonthsAgePelaku.male, dataSet.last12MonthsAgePelaku.female);
+      } else if(period === "3year3") {
+        chart3a = createLineChart(ctx3a, "Tren Waktu", dataSet.last3YearsTrend, last3YearsLabels);
+        chart3b = createBarGroupedChart(ctx3b, "Usia Pelaku", ageGroups, dataSet.last3YearsAgePelaku.male, dataSet.last3YearsAgePelaku.female);
+      }
+    }
+  });
+
+  // Div 4 tab
+  document.getElementById("menu4").addEventListener("click", e => {
+    if(e.target.tagName === "BUTTON") {
+      const period = e.target.dataset.period;
+      setActiveTab("menu4", period);
+
+      chart4a.destroy();
+      chart4b.destroy();
+
+      if(period === "year4") {
+        chart4a = createBarGroupedChart(ctx4a, "Usia Korban", ageGroups, dataSet.lastYearAgeKorban.male, dataSet.lastYearAgeKorban.female);
+        chart4b = createBarChart(ctx4b, "Waktu Kejadian", dataSet.lastYearTime, hourLabels);
+      } else if(period === "month4") {
+        chart4a = createBarGroupedChart(ctx4a, "Usia Korban", ageGroups, dataSet.lastMonthAgeKorban.male, dataSet.lastMonthAgeKorban.female);
+        chart4b = createBarChart(ctx4b, "Waktu Kejadian", dataSet.lastMonthTime, hourLabels);
+      } else if(period === "3year4") {
+        chart4a = createBarGroupedChart(ctx4a, "Usia Korban", ageGroups, dataSet.last3YearsAgeKorban.male, dataSet.last3YearsAgeKorban.female);
+        chart4b = createBarChart(ctx4b, "Waktu Kejadian", dataSet.last3YearsTime, hourLabels);
+      }
+    }
+  });
+</script>
+</body>
+</html>
